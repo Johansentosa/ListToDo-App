@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>To Do List</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font -->
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel=”stylesheet” href=”//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css”>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    
+    <script>
+    	//Configure Nav Bar
+    	$('.menu li a').click(function(e) {
+		  var $this = $(this);
+		  if (!$this.hasClass('active')) {
+		    $this.addClass('active');
+		  }
+		  e.preventDefault();
+		});
+    </script>
+     <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" on-click="changeButton()">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<p class="navbar-brand"> ToDo! </p>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-menu">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#"> Home </a></li>
+					<li><a href="#"> How To </a></li>
+					<li><a href="#"> About </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class = "col-md-3">
+		</div>
+		<div class = "col-md-6 row-height">
+			<h3>What to do?</h3>
+			<hr> 
+			<table class="table table-hover">
+			<tbody id="addRowData">
+				<tr>
+					<td>
+						<div class="row-content">
+							  	<div class="checkboxFive">
+							  		<input type="checkbox" value="1" id="checkboxFiveInput" name="" />
+								  	<label for="checkboxFiveInput"></label>
+							  	</div>
+							  	<div class="row-data">
+								  	<h4>
+								  	find pig
+								  	</h4>
+								  	<div class="content">
+								  		Please find a pig in the mist of vanilla flavour in the adventurous dessert of biscuit.
+								  		<div class="black">
+								  			23 February 2017 - 27 Februari 2017
+								  		</div>
+							  		</div>
+							  	</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		  	</table>
+		  	<hr>
+		  	<a href="#" id="task">
+		  		+ Add Task
+		 	 </a>
+		  	
+
+			<div id="task-form">
+			
+					<label for="task-name">What's your task?</label>
+					<div class="input-list style-1 clearfix"><input type="text" name="task-name" id="task-name" placeholder="eg. Water the plants"></div>
+					<br>
+					<label for="description">Description</label>
+					<div class="input-list style-1 clearfix"><input type="text" name="description" id="description" placeholder="eg. Take the watering can"></div>
+					<br>
+					<label for="start-date">Start date</label>
+					<div class='input-group date'>
+	                    <input type='text' class="form-control" id='start-date'/>
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div>
+	                <br>
+					<label for="due-date">Due date</label>
+					<div class='input-group date'>
+	                    <input type='text' class="form-control"  id='due-date' />
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div>
+	                <br>
+	                <label for="priority">Priority</label>
+	                <br>
+					<label class="radio-inline">
+				      <input type="radio" name="optradio">High
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="optradio">Medium
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="optradio">Low
+				    </label>
+				    <br>
+			   		<button class="btnSubmit" value="send" id="submit">Add</button>
+			   		<button class="btnCancel" value="send" id="cancel">Cancel</button>
+			   
+            </div>
+
+
+    </div>
+</div>
+		</div>
+		<div class = "col-md-3">
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+	$("#task-form").hide();
+	var tasks = ["Make Example"];
+	var description = ["Click add task bellow"];
+	var startDate = ["14/02/2017"];
+	var dueDate = ["14/02/2017"];
+	var priority = ["high"];
+
+	//tasks =  JSON.parse(localStorage.getItem("tasks"));
+	//description =  JSON.parse(localStorage.getItem("description"));
+	//startDate =  JSON.parse(localStorage.getItem("startDate"));
+	//dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
+	//priority =  JSON.parse(localStorage.getItem("priority"));
+
+
+    $("#task").click(function(){
+        $("#task").hide();
+        $("#task-form").show();
+    });
+    $("#submit").click(function(){
+    	$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + $("#task-name").val() + "</h4><div class=\"content\">" + $("#description").val() + "<div class=\"black\">" + $("#start-date").val() + " - " + $("#due-date").val() + "</div></div></div></div></td></tr>"); 			  	
+								  	
+        if (typeof(Storage) !== "undefined") {
+        	tasks.push($("#task-name").val());
+        	//description.push($("#description").val());
+        	//startDate.push($("#due-date").val());
+        	//dueDate.push($("#start-date").val());
+        	//priority.push($("#description").text());
+
+			localStorage.setItem("task", JSON.stringify(tasks));
+			localStorage.setItem("description", JSON.stringify(description));
+			localStorage.setItem("startDate", JSON.stringify(startDate));
+			localStorage.setItem("dueDate", JSON.stringify(dueDate));
+			localStorage.setItem("priority", JSON.stringify(priority));
+		} 
+		else {
+			document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+		}
+
+		$("#task-form").hide();
+        $("#task").show();
+    });
+    $("#cancel").click(function(){
+    	$("#task-form").hide();
+        $("#task").show();
+    });
+});
+</script>
