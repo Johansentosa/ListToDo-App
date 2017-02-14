@@ -89,7 +89,7 @@
 				<br>
 				<label for="start-date">Start date</label>
 				<div class='input-group date'>
-                    <input type='text' class="form-control" id='start-date'/>
+                    <input type='text' class="form-control" id='start-date' placeholder="dd/mm/yyy"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -97,7 +97,7 @@
                 <br>
 				<label for="due-date">Due date</label>
 				<div class='input-group date'>
-                    <input type='text' class="form-control"  id='due-date' />
+                    <input type='text' class="form-control"  id='due-date' placeholder="dd/mm/yyy" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -370,6 +370,11 @@ $(document).ready(function() {
 		else {
 			document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
 		}
+
+		$("#task-name").val("");
+		$("#description").val("");
+		$("#due-date").val("");
+		$("#start-date").val("");
 
 		$("#task-form").hide();
         $("#task").show();
