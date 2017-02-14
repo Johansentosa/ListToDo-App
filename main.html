@@ -8,26 +8,9 @@
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link rel=”stylesheet” href=”//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css”>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-    
-    <script>
-    	//Configure Nav Bar
-    	$('.menu li a').click(function(e) {
-		  var $this = $(this);
-		  if (!$this.hasClass('active')) {
-		    $this.addClass('active');
-		  }
-		  e.preventDefault();
-		});
-    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <!-- Stylesheet -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style/checkbox.css">
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
@@ -60,12 +43,12 @@
 			<hr> 
 			<table class="table table-hover">
 			<tbody id="addRowData">
-				
+				<!--
 				<tr>
 					<td>
 						<div class="row-content">
 							  	<div class="checkboxFive">
-							  		<input type="checkbox" value="1" id="checkboxFiveInput" name="" />
+							  		<input type="checkbox" value="1" id="checkboxFiveInput" name="" checked="checked" />
 								  	<label for="checkboxFiveInput"></label>
 							  	</div>
 							  	<div class="row-data">
@@ -75,7 +58,7 @@
 								  	<div class="priority-low">high</div>
 								  	<div class="delete">
 								  		<a href="#" class="large material-icons" id="deleteData" onclick="deleteData(2)">delete</a>
-								  		<a href="#" class="large material-icons" id="deleteData" onclick="deleteData(2)">mode_edit</a>
+								  		<a href="#" class="large material-icons" id="deleteData" onclick="editData(2)">mode_edit</a>
 								  	</div>
 								  	<div class="content">
 								  		Please find a pig in the mist of vanilla flavour in the adventurous dessert of biscuit.
@@ -84,10 +67,11 @@
 								  		</div>
 							  		</div>
 							  	</div>
+							  	<div id="test"></div>
 						</div>
 					</td>
 				</tr>
-				
+				-->
 			</tbody>
 		  	</table>
 		  	<hr>
@@ -97,44 +81,42 @@
 		  	
 
 			<div id="task-form">
-			
-					<label for="task-name">What's your task?</label>
-					<div class="input-list style-1 clearfix"><input type="text" name="task-name" id="task-name" placeholder="eg. Water the plants"></div>
-					<br>
-					<label for="description">Description</label>
-					<div class="input-list style-1 clearfix"><input type="text" name="description" id="description" placeholder="eg. Take the watering can"></div>
-					<br>
-					<label for="start-date">Start date</label>
-					<div class='input-group date'>
-	                    <input type='text' class="form-control" id='start-date'/>
-	                    <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>
-	                <br>
-					<label for="due-date">Due date</label>
-					<div class='input-group date'>
-	                    <input type='text' class="form-control"  id='due-date' />
-	                    <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-	                </div>
-	                <br>
-	                <label for="priority">Priority</label>
-	                <br>
-					<label class="radio-inline">
-				      <input type="radio" name="priority" value="high">High
-				    </label>
-				    <label class="radio-inline">
-				      <input type="radio" name="priority" value="medium">Medium
-				    </label>
-				    <label class="radio-inline">
-				      <input type="radio" name="priority" value="low">Low
-				    </label>
-				    <br>
-			   		<button class="btnSubmit" value="send" id="submit">Add</button>
-			   		<button class="btnCancel" value="send" id="cancel">Cancel</button>
-			   
+				<label for="task-name">What's your task?</label>
+				<div class="input-list style-1 clearfix"><input type="text" name="task-name" id="task-name" placeholder="eg. Water the plants"></div>
+				<br>
+				<label for="description">Description</label>
+				<div class="input-list style-1 clearfix"><input type="text" name="description" id="description" placeholder="eg. Take the watering can"></div>
+				<br>
+				<label for="start-date">Start date</label>
+				<div class='input-group date'>
+                    <input type='text' class="form-control" id='start-date'/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <br>
+				<label for="due-date">Due date</label>
+				<div class='input-group date'>
+                    <input type='text' class="form-control"  id='due-date' />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <br>
+                <label for="priority">Priority</label>
+                <br>
+				<label class="radio-inline">
+			      <input type="radio" name="priority" value="high">High
+			    </label>
+			    <label class="radio-inline">
+			      <input type="radio" name="priority" value="medium">Medium
+			    </label>
+			    <label class="radio-inline">
+			      <input type="radio" name="priority" value="low">Low
+			    </label>
+			    <br>
+		   		<button class="btnSubmit" value="send" id="submit">Add</button>
+		   		<button class="btnCancel" value="send" id="cancel">Cancel</button>
             </div>
 
 
@@ -147,7 +129,99 @@
 </body>
 </html>
 
+<!--Bootstrap-->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
+//Configure Nav Bar
+$('.menu li a').click(function(e) {
+  var $this = $(this);
+  if (!$this.hasClass('active')) {
+    $this.addClass('active');
+  }
+  e.preventDefault();
+});
+
+//Edit Data
+function editData(x) {
+	var id = [];
+	var tasks = [];
+	var description = [];
+	var startDate = [];
+	var dueDate = [];
+	var priority = [];
+	var priorityRadio;
+	var i;
+
+	//Read data
+	if (JSON.parse(localStorage.getItem("id")) != null) {
+		id = JSON.parse(localStorage.getItem("id"));
+		tasks =  JSON.parse(localStorage.getItem("tasks"));
+		description =  JSON.parse(localStorage.getItem("description"));
+		startDate =  JSON.parse(localStorage.getItem("startDate"));
+		dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
+		priority =  JSON.parse(localStorage.getItem("priority"));
+	}
+
+	for (i=0; i<id.length; i++) {
+		var priorityRadio;
+
+		if (priority[i] == "high") {
+			priorityRadio = "<input type=\"radio\" name=\"priority-edit\" id\"priority-edit\" value=\"high\" checked=\"checked\">High</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"medium\">Medium</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"low\">Low</label>";
+		}
+		else if (priority[i] == "medium") {
+			priorityRadio = "<input type=\"radio\" name=\"priority-edit\" id\"priority-edit\" value=\"high\">High</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"medium\" checked=\"checked\">Medium</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"low\">Low</label>";
+		}
+		else {
+			priorityRadio = "<input type=\"radio\" name=\"priority-edit\" id\"priority-edit\" value=\"high\">High</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"medium\">Medium</label><label class=\"radio-inline\"><input type=\"radio\" name=\"priority\" value=\"low\" checked=\"checked\">Low</label>";
+		}
+
+		if (id[i] == x) {
+			document.getElementById("text" + x).innerHTML = "<hr><div id=\"task-form\"><h2>Edit</h2><br><label for=\"task-name\">What's your task?</label><div class=\"input-list style-1 clearfix\"><input type=\"text\" name=\"task-name\" id=\"task-name-edit\" value=\"" + tasks[i].toString() + "\"></div><br><label for=\"description\">Description</label><div class=\"input-list style-1 clearfix\"><input type=\"text\" name=\"description\" id=\"description-edit\" value=\"" + description[i] + "\"></div><br><label for=\"start-date\">Start date</label><div class=\"input-group date\"><input type=\"text\" class=\"form-control\" id=\"start-date-edit\" value=\""+ startDate[i] +"\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span></div><br><label for=\"due-date\">Due date</label><div class=\"input-group date\"><input type=\"text\" class=\"form-control\"  id=\"due-date-edit\" value=\""+ dueDate[i] +"\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span></div><br><label for=\"priority\">Priority</label><br><label class=\"radio-inline\">" + priorityRadio +"<br><button class=\"btnSubmit\" value=\"send\" id=\"doneEdit\" onclick=\"doneEditData("+ x +")\">Done</button></div>";
+		}
+	}
+}
+
+function doneEditData(x) {
+	var id = [];
+	var tasks = [];
+	var description = [];
+	var startDate = [];
+	var dueDate = [];
+	var priority = [];
+	var priorityRadio;
+	var i;
+
+	//Read data
+	if (JSON.parse(localStorage.getItem("id")) != null) {
+		id = JSON.parse(localStorage.getItem("id"));
+		tasks =  JSON.parse(localStorage.getItem("tasks"));
+		description =  JSON.parse(localStorage.getItem("description"));
+		startDate =  JSON.parse(localStorage.getItem("startDate"));
+		dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
+		priority =  JSON.parse(localStorage.getItem("priority"));
+	}
+
+	for (i=0; i<id.length; i++) {
+		if (id[i] == x) {
+			tasks[i] = document.getElementById("task-name-edit").value
+			description[i] = document.getElementById("description-edit").value
+			startDate[i] = document.getElementById("start-date-edit").value
+			dueDate[i] = document.getElementById("due-date-edit").value
+	
+
+			localStorage.setItem("id", JSON.stringify(id));
+			localStorage.setItem("tasks", JSON.stringify(tasks));
+			localStorage.setItem("description", JSON.stringify(description));
+			localStorage.setItem("startDate", JSON.stringify(startDate));
+			localStorage.setItem("dueDate", JSON.stringify(dueDate));
+			localStorage.setItem("priority", JSON.stringify(priority));
+		}
+	}
+	location.reload();
+}
 
 //Delete Data
 function deleteData(x) {
@@ -187,6 +261,7 @@ function deleteData(x) {
 			localStorage.setItem("priority", JSON.stringify(priority));
 		}
 	}
+	location.reload();
 }
 
 $(document).ready(function() {	
@@ -231,7 +306,7 @@ $(document).ready(function() {
 			priorityRadio = "<div class=\"priority-low\">low</div>";
 		}
 
-		$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + tasks[i] + "</h4>" + priorityRadio + "<div class=\"delete\"><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"deleteData(" + id[i] + ")\">delete</a></div>" + "<div class=\"content\">" + description[i] + "<div class=\"black\">" + startDate[i] + " - " + dueDate[i] + "</div></div></div></div></td></tr>");
+		$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + tasks[i] + "</h4>" + priorityRadio + "<div class=\"delete\"><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"deleteData(" + id[i] + ")\">delete</a><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"editData(" + id[i] + ")\">mode_edit</a></div>" + "<div class=\"content\">" + description[i] + "<div class=\"black\">" + startDate[i] + " - " + dueDate[i] + "</div></div></div><div id=\"text" + id[i] + "\"></div></div></td></tr>");
 	}
 
 	//Delete to-do list
@@ -261,6 +336,7 @@ $(document).ready(function() {
         $("#task-form").show();
     });
 
+    //Add Data
     $("#submit").click(function(){
     	if ($('input[name="priority"]:checked').val() == "high") {
     		priorityRadio = "<div class=\"priority-high\">high</div>";
@@ -272,7 +348,7 @@ $(document).ready(function() {
     		priorityRadio = "<div class=\"priority-low\">high</div>";
     	}
 
-    	$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + $("#task-name").val() + "</h4>" + priorityRadio + "<div class=\"content\">" + $("#description").val() + "<div class=\"black\">" + $("#start-date").val() + " - " + $("#due-date").val() + "</div></div></div></div></td></tr>"); 			  	
+    	$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + $("#task-name").val() + "</h4>" + priorityRadio + "<div class=\"delete\"><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"deleteData(" + id[i] + ")\">delete</a><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"editData(" + id[i] + ")\">mode_edit</a></div><div class=\"content\">" + $("#description").val() + "<div class=\"black\">" + $("#start-date").val() + " - " + $("#due-date").val() + "</div></div></div></div></td></tr>"); 			  	
 								  	
         if (typeof(Storage) !== "undefined") {
         	var temp = id.pop();
@@ -305,3 +381,4 @@ $(document).ready(function() {
     });
 });
 </script>
+
