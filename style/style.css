@@ -11,6 +11,9 @@ h3 {
 h4 {
 	color: #441444;
 	font-size: 28px;
+	display: inline-block;
+	margin: 3px;
+	margin-left: 0;
 }
 
 hr {
@@ -178,4 +181,50 @@ input[type="text"]:focus {
 .btnCancel:hover {
   color: white;
   background: hotpink;
+}
+.priority-high {
+	color: hotpink;
+	display: inline-block;
+	margin-left: 6px;
+	border: 1px solid hotpink;
+	border-radius: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.priority-medium {
+	color: #e07d0d;
+	display: inline-block;
+	margin-left: 6px;
+	border: 1px solid #e07d0d;
+	border-radius: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.priority-low {
+	color: #d3d02a;
+	display: inline-block;
+	margin-left: 6px;
+	border: 1px solid #d3d02a;
+	border-radius: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.delete {
+	float: right;
+	margin-top: 5px;
+	display: inline-block;
+}
+.delete a{
+	color: gray;
+	text-decoration: none;
+}
+.delete a:hover {
+	color: hotpink;
+	text-decoration: none;
 }

@@ -8,6 +8,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link rel=”stylesheet” href=”//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css”>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -59,6 +60,7 @@
 			<hr> 
 			<table class="table table-hover">
 			<tbody id="addRowData">
+				
 				<tr>
 					<td>
 						<div class="row-content">
@@ -70,6 +72,11 @@
 								  	<h4>
 								  	find pig
 								  	</h4>
+								  	<div class="priority-low">high</div>
+								  	<div class="delete">
+								  		<a href="#" class="large material-icons" id="deleteData" onclick="deleteData(2)">delete</a>
+								  		<a href="#" class="large material-icons" id="deleteData" onclick="deleteData(2)">mode_edit</a>
+								  	</div>
 								  	<div class="content">
 								  		Please find a pig in the mist of vanilla flavour in the adventurous dessert of biscuit.
 								  		<div class="black">
@@ -80,6 +87,7 @@
 						</div>
 					</td>
 				</tr>
+				
 			</tbody>
 		  	</table>
 		  	<hr>
@@ -115,13 +123,13 @@
 	                <label for="priority">Priority</label>
 	                <br>
 					<label class="radio-inline">
-				      <input type="radio" name="optradio">High
+				      <input type="radio" name="priority" value="high">High
 				    </label>
 				    <label class="radio-inline">
-				      <input type="radio" name="optradio">Medium
+				      <input type="radio" name="priority" value="medium">Medium
 				    </label>
 				    <label class="radio-inline">
-				      <input type="radio" name="optradio">Low
+				      <input type="radio" name="priority" value="low">Low
 				    </label>
 				    <br>
 			   		<button class="btnSubmit" value="send" id="submit">Add</button>
@@ -140,36 +148,144 @@
 </html>
 
 <script>
-$(document).ready(function(){
+
+//Delete Data
+function deleteData(x) {
+    var id = [];
+	var tasks = [];
+	var description = [];
+	var startDate = [];
+	var dueDate = [];
+	var priority = [];
+	var priorityRadio;
+	var i;
+
+	//Read data
+	if (JSON.parse(localStorage.getItem("id")) != null) {
+		id = JSON.parse(localStorage.getItem("id"));
+		tasks =  JSON.parse(localStorage.getItem("tasks"));
+		description =  JSON.parse(localStorage.getItem("description"));
+		startDate =  JSON.parse(localStorage.getItem("startDate"));
+		dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
+		priority =  JSON.parse(localStorage.getItem("priority"));
+	}
+
+	for (i=0; i<id.length; i++) {
+		if (id[i] == x) {
+			id.splice(i,1);
+			tasks.splice(i,1);
+			description.splice(i,1);
+			startDate.splice(i,1);
+			dueDate.splice(i,1);
+			priority.splice(i,1);
+
+			localStorage.setItem("id", JSON.stringify(id));
+			localStorage.setItem("tasks", JSON.stringify(tasks));
+			localStorage.setItem("description", JSON.stringify(description));
+			localStorage.setItem("startDate", JSON.stringify(startDate));
+			localStorage.setItem("dueDate", JSON.stringify(dueDate));
+			localStorage.setItem("priority", JSON.stringify(priority));
+		}
+	}
+}
+
+$(document).ready(function() {	
 	$("#task-form").hide();
-	var tasks = ["Make Example"];
-	var description = ["Click add task bellow"];
-	var startDate = ["14/02/2017"];
-	var dueDate = ["14/02/2017"];
-	var priority = ["high"];
+	var id = [];
+	var tasks = [];
+	var description = [];
+	var startDate = [];
+	var dueDate = [];
+	var priority = [];
+	var priorityRadio;
+	var i;
 
-	//tasks =  JSON.parse(localStorage.getItem("tasks"));
-	//description =  JSON.parse(localStorage.getItem("description"));
-	//startDate =  JSON.parse(localStorage.getItem("startDate"));
-	//dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
-	//priority =  JSON.parse(localStorage.getItem("priority"));
+	//Read data
+	if (JSON.parse(localStorage.getItem("id")) != null) {
+		id = JSON.parse(localStorage.getItem("id"));
+		tasks =  JSON.parse(localStorage.getItem("tasks"));
+		description =  JSON.parse(localStorage.getItem("description"));
+		startDate =  JSON.parse(localStorage.getItem("startDate"));
+		dueDate =  JSON.parse(localStorage.getItem("dueDate"));;
+		priority =  JSON.parse(localStorage.getItem("priority"));
+	}
+	else {
+		id = [1];
+		tasks = ["Make New Task"];
+		description = ["Click 'Add Task' button bellow"];
+		startDate = ["14/02/2017"];
+		dueDate = ["14/02/2017"];
+		priority = ["high"];
+	}
 
+
+	//Display read data
+	for (i=0; i<id.length; i++) {
+		if (priority[i] == "high") {
+			priorityRadio = "<div class=\"priority-high\">high</div>";
+		}
+		else if (priority[i] == "medium") {
+			priorityRadio = "<div class=\"priority-medium\">medium</div>";
+		}
+		else {
+			priorityRadio = "<div class=\"priority-low\">low</div>";
+		}
+
+		$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + tasks[i] + "</h4>" + priorityRadio + "<div class=\"delete\"><a href=\"#\" class=\"large material-icons\" id=\"deleteData\" onclick=\"deleteData(" + id[i] + ")\">delete</a></div>" + "<div class=\"content\">" + description[i] + "<div class=\"black\">" + startDate[i] + " - " + dueDate[i] + "</div></div></div></div></td></tr>");
+	}
+
+	//Delete to-do list
+	//$("#deleteData").click(function() {
+	//	alert("ss");
+	//	for (i=0; i<id.length; i++) {
+	//		if (id[i] == ($(this).data('target'))) {
+	//			id.splice(i,1);
+	//			tasks.splice(i,1);
+	//			description.splice(i,1);
+	//			startDate.splice(i,1);
+	//			dueDate.splice(i,1);
+	//			priority.splice(i,1);
+	//
+	//			localStorage.setItem("id", JSON.stringify(id));
+	//			localStorage.setItem("tasks", JSON.stringify(tasks));
+	//			localStorage.setItem("description", JSON.stringify(description));
+	//			localStorage.setItem("startDate", JSON.stringify(startDate));
+	//			localStorage.setItem("dueDate", JSON.stringify(dueDate));
+	//			localStorage.setItem("priority", JSON.stringify(priority));
+	//		}
+	//	}
+	//});
 
     $("#task").click(function(){
         $("#task").hide();
         $("#task-form").show();
     });
+
     $("#submit").click(function(){
-    	$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + $("#task-name").val() + "</h4><div class=\"content\">" + $("#description").val() + "<div class=\"black\">" + $("#start-date").val() + " - " + $("#due-date").val() + "</div></div></div></div></td></tr>"); 			  	
+    	if ($('input[name="priority"]:checked').val() == "high") {
+    		priorityRadio = "<div class=\"priority-high\">high</div>";
+    	}
+    	else if ($('input[name="priority"]:checked').val() == "medium") {
+    		priorityRadio = "<div class=\"priority-medium\">high</div>";
+    	}
+    	else {
+    		priorityRadio = "<div class=\"priority-low\">high</div>";
+    	}
+
+    	$("#addRowData").append("<tr><td><div class=\"row-content\"><div class=\"checkboxFive\"><input type=\"checkbox\" value=\"1\" id=\"checkboxFiveInput\"><label for=\"checkboxFiveInput\"></label></div><div class=\"row-data\"><h4>" + $("#task-name").val() + "</h4>" + priorityRadio + "<div class=\"content\">" + $("#description").val() + "<div class=\"black\">" + $("#start-date").val() + " - " + $("#due-date").val() + "</div></div></div></div></td></tr>"); 			  	
 								  	
         if (typeof(Storage) !== "undefined") {
+        	var temp = id.pop();
+        	id.push(temp);
+        	id.push(temp + 1);
         	tasks.push($("#task-name").val());
-        	//description.push($("#description").val());
-        	//startDate.push($("#due-date").val());
-        	//dueDate.push($("#start-date").val());
-        	//priority.push($("#description").text());
+        	description.push($("#description").val());
+        	startDate.push($("#due-date").val());
+        	dueDate.push($("#start-date").val());
+        	priority.push($('input[name="priority"]:checked').val());
 
-			localStorage.setItem("task", JSON.stringify(tasks));
+        	localStorage.setItem("id", JSON.stringify(id));
+			localStorage.setItem("tasks", JSON.stringify(tasks));
 			localStorage.setItem("description", JSON.stringify(description));
 			localStorage.setItem("startDate", JSON.stringify(startDate));
 			localStorage.setItem("dueDate", JSON.stringify(dueDate));
@@ -182,6 +298,7 @@ $(document).ready(function(){
 		$("#task-form").hide();
         $("#task").show();
     });
+
     $("#cancel").click(function(){
     	$("#task-form").hide();
         $("#task").show();
